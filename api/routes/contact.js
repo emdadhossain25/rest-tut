@@ -1,53 +1,14 @@
 const express = require('express');
 const route = express.Router();
-const Contact = require('../model/Contact');
+const contactController = require('../controllers/contact')
 
 //Get
-route.get('/',(req, res, next)=>{
-   Contact.find()
-        .then(contacts =>{
-            res.status(200).json({
-                message : "All Contacts",
-                contacts
-            })
-        })
-        .catch(err=>{
-            console.log(err)
-            res.status(500).json({
-                message : 'Error Occurred',
-                error:err
-            })
-        })
-
-})
+route.get('/',contactController.getAllContactController)
 
 
 //post
 
-route.post('/',(req,res,next)=>{
-
-    const contact = new Contact({
-        name:req.body.name,
-        phone:req.body.phone,
-        email:req.body.email
-    })
-
-    contact.save()
-          .then(data=>{
-              res.status(201).json({
-                  message : 'Contact Added',
-                  contact : data
-              })
-              .catch(err=>{
-                console.log(err)
-                res.status(500).json({
-                    message : 'Error Occurred',
-                    error:err
-                })
-          })
-    
-})
-})
+route.post('/',contactController.postNewContactController)
 
 
 // dynamic routing
