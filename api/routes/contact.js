@@ -14,12 +14,8 @@ route.post('/',contactController.postNewContactController)
 // dynamic routing
 
 //get routing
-route.get('/:id',(req,res,next)=>{
-    const id = req.params.id
-    res.json({
-        userid:id
-    })
-})
+route.get('/:id',contactController.getSingleContact)
+
 
 // post
 route.post('/:id',(req,res,next)=>{
@@ -29,18 +25,9 @@ route.post('/:id',(req,res,next)=>{
 })
 
 // put
-route.put('/:id',(req,res,next)=>{
-    
-    res.json({
-    message:"I am a put route"
-    })
-})
+route.put('/:id',contactController.editContact)
 
-route.delete('/:id',(req,res,next)=>{
-    res.json({
-        message:"I am a delete route"
-        })
-})
+route.delete('/:id',contactController.deleteCOntact)
 
 
 // const contacts = [
