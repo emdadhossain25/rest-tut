@@ -27,7 +27,7 @@ route.post('/:id',(req,res,next)=>{
 // put
 route.put('/:id',contactController.editContact)
 
-route.delete('/:id',contactController.deleteCOntact)
+route.delete('/:id',contactController.deleteContact)
 
 
 // const contacts = [

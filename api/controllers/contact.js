@@ -64,7 +64,7 @@ const getSingleContact = (req,res,next)=>{
  }
 
 
- const deleteCOntact = (req,res,next)=>{
+ const deleteContact = (req,res,next)=>{
      let id =req.params.id
      Contact.findByIdAndRemove(id)
      .then(result =>{
@@ -117,6 +117,6 @@ module.exports = {
     getAllContactController,
     postNewContactController,
     getSingleContact,
-    deleteCOntact,
+    deleteContact,
     editContact
 }
