@@ -4,6 +4,7 @@ const body_parser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const contactRoute = require('./api/routes/contact')
+const userRoute = require('./api/routes/user')
 // console.log(express)
 
 
@@ -46,5 +47,5 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/api/contacts',contactRoute)
-
+app.use('/api/users',userRoute)
 

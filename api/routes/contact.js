@@ -1,6 +1,7 @@
 const express = require('express');
 const route = express.Router();
 const contactController = require('../controllers/contact')
+const authenticate = require('../middleware/authenticate')
 
 //Get
 route.get('/',contactController.getAllContactController)
@@ -8,7 +9,7 @@ route.get('/',contactController.getAllContactController)
 
 //post
 
-route.post('/',contactController.postNewContactController)
+route.post('/',authenticate,contactController.postNewContactController)
 
 
 // dynamic routing
@@ -25,9 +26,9 @@ route.post('/:id',(req,res,next)=>{
 })
 
 // put
-route.put('/:id',contactController.editContact)
+route.put('/:id',authenticate,contactController.editContact)
 
-route.delete('/:id',contactController.deleteContact)
+route.delete('/:id',authenticate,contactController.deleteContact)
 
 
 // const contacts = [
